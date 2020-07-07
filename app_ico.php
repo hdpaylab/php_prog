@@ -18,14 +18,14 @@ function init()
 
 	 $style = "style='padding-left:10;padding-right:10;font-size:12pt;'";
 
-	// hdacrpc.cfg ÀĞ±â
+	// hdacrpc.cfg ì½ê¸°
 	$config=read_config();
 
-	// ±âº» »ç¿ë name ¼±Á¤ (hdacrpc.cfg ÂüÁ¶)
+	// ê¸°ë³¸ ì‚¬ìš© name ì„ ì • (hdacrpc.cfg ì°¸ì¡°)
 	$chain = "hdac-prv";
 	set_hdac_chain($config[$chain]);
 
-	// ½Ã°£ ÃøÁ¤..
+	// ì‹œê°„ ì¸¡ì •..
 //	$ret = hdac("listblocks", "1");
 //	$lasttime = $ret["result"][0]["time"];
 }

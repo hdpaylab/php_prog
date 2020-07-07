@@ -3,7 +3,7 @@
 //
 // Usage: php addr_tx.php H9wZxQXaM1osKna49FTFeLzF8ecqURX2Z5
 //
-// ÀÔ·ÂµÈ ÁÖ¼ÒÀÇ ¸ğµç ¼Û±İ ³»¿ª Ãâ·ÂÇÔ 
+// ì…ë ¥ëœ ì£¼ì†Œì˜ ëª¨ë“  ì†¡ê¸ˆ ë‚´ì—­ ì¶œë ¥í•¨ 
 //
 
 require_once 'hdacrpc.php';
@@ -30,15 +30,15 @@ function init($argv)
 	preg_match_all('/ (--\w+ (?:[= ] [^-]+ [^\s-] )? ) | (-\w+) | (\w+) /x', $args, $match);
 	$args = array_shift($match);
 
-	// hdacrpc.cfg ÀĞ±â
+	// hdacrpc.cfg ì½ê¸°
 	$config=read_config();
 
-	// ±âº» »ç¿ë name ¼±Á¤ (hdacrpc.cfg ÂüÁ¶)
+	// ê¸°ë³¸ ì‚¬ìš© name ì„ ì • (hdacrpc.cfg ì°¸ì¡°)
 	$chain = "hdac-test";
 	$chain = "hdac-mainnet";
 	set_hdac_chain($config[$chain]);
 
-	// ½Ã°£ ÃøÁ¤..
+	// ì‹œê°„ ì¸¡ì •..
 //	$ret = hdac("listblocks", "1");
 //	$lasttime = $ret["result"][0]["time"];
 }

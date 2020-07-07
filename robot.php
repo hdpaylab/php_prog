@@ -18,14 +18,14 @@ function init()
 
 	 $style = "style='padding-left:10;padding-right:10;font-size:12pt;'";
 
-	// hdacrpc.cfg ÀĞ±â
+	// hdacrpc.cfg ì½ê¸°
 	$config=read_config();
 
-	// ±âº» »ç¿ë name ¼±Á¤ (hdacrpc.cfg ÂüÁ¶)
+	// ê¸°ë³¸ ì‚¬ìš© name ì„ ì • (hdacrpc.cfg ì°¸ì¡°)
 	$chain = "hdac-prv";
 	set_hdac_chain($config[$chain]);
 
-	// ½Ã°£ ÃøÁ¤..
+	// ì‹œê°„ ì¸¡ì •..
 //	$ret = hdac("listblocks", "1");
 //	$lasttime = $ret["result"][0]["time"];
 }
@@ -173,7 +173,7 @@ function dashboard()
 	$SYNC_key = $SYNC_cache[$handler[0]]["key"];
 	$SYNC_key2 = $SYNC_cache[$handler[0]]["key"];
 
-	// device 1ÀÌ ¸¶Ä¡°í ±â·ÏÀ» ÇßÀ½ ==> dev1=sleep dev2=running
+	// device 1ì´ ë§ˆì¹˜ê³  ê¸°ë¡ì„ í–ˆìŒ ==> dev1=sleep dev2=running
 	if ($rec1["time"] > $rec2["time"])
 	{
 		$status = "wait...";

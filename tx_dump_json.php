@@ -34,6 +34,8 @@ function init($argv)
 	$chain = "hdac-mainnet";
 	set_hdac_chain($config[$chain]);
 
+	@mkdir("txdump", 0755);
+
 	// 시간 측정..
 //	$ret = hdac("listblocks", "1");
 //	$lasttime = $ret["result"][0]["time"];
@@ -55,28 +57,39 @@ function main()
 	print "Start block = $startblock\n";
 	print "Last  block = $lastblock\n";
 
-	$fp = fopen("block_dump.csv", "a+");
-
-	for ($bidx = $startblock; $bidx <= $lastblock; $bidx++)
+	for ($blkno = $startblock; $blkno <= $lastblock; $blkno++)
 	{
-		block($fp, $bidx);
+		block($blkno);
 	}
-
-	fclose($fp);
 }
 
 
-function block($fp, $bidx)
+function block($blkno)
 {
-	$ret = hdac("getblock", "$bidx");
+	$ret = hdac("getblock", "$blkno");
 	$block = $ret["result"];
+	$txlist = $block["tx"];
+
+	$fileno = (int) ($blkno / 1000);
+	$fname = sprintf("txdump/hdac-%03d.json", $fileno);
+	$fp = fopen($fname, "ab");
 
 	$timestamp = date("Y-m-d H:i:s", $block["time"]);
-	$ntx = count($block["tx"]);
+	$numtx = count($block["tx"]);
 
-	print "block #$bidx ntx=$ntx $timestamp\n";
+	print "block #$blkno numtx=$numtx $timestamp\n";
 
-	fprintf($fp, "%d, %d, %s\n", $bidx, $ntx, $timestamp);
+	for ($nn = 0; $nn < $numtx; $nn++)
+	{
+		$txid = $txlist[$nn];
+		$ret = hdac("getrawtransaction", $txid, 4);
+		$txjson = $ret["result"];
+
+		fprintf($fp, "\n{\n  \"block\": %d,\n  \"ntx\":%d,\n  \"txid\":$txid,\n  %s\n}\n\n\n", 
+			$blkno, $nn + 1, json_encode($txjson, JSON_PRETTY_PRINT));
+	}
+
+	fclose($fp);
 }
 
 

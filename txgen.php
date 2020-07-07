@@ -3,7 +3,7 @@
 //
 // Usage: php txgen.php
 //
-// WorldmapÀÇ Å×½ºÆ®¿ë TX »ı¼º ÇÁ·Î±×·¥ 
+// Worldmapì˜ í…ŒìŠ¤íŠ¸ìš© TX ìƒì„± í”„ë¡œê·¸ë¨ 
 //
 
 require_once 'hdacrpc.php';

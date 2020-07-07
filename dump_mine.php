@@ -27,14 +27,14 @@ function init($argv)
 	preg_match_all('/ (--\w+ (?:[= ] [^-]+ [^\s-] )? ) | (-\w+) | (\w+) /x', $args, $match);
 	$args = array_shift($match);
 
-	// hdacrpc.cfg ÀÐ±â
+	// hdacrpc.cfg ì½ê¸°
 	$config=read_config();
 
-	// ±âº» »ç¿ë name ¼±Á¤ (hdacrpc.cfg ÂüÁ¶)
+	// ê¸°ë³¸ ì‚¬ìš© name ì„ ì • (hdacrpc.cfg ì°¸ì¡°)
 	$chain = "hdac-mainnet";
 	set_hdac_chain($config[$chain]);
 
-	// ½Ã°£ ÃøÁ¤..
+	// ì‹œê°„ ì¸¡ì •..
 //	$ret = hdac("listblocks", "1");
 //	$lasttime = $ret["result"][0]["time"];
 }
@@ -119,7 +119,7 @@ function calc_mining_tx($fp, $block)
 
 		$vinobj = $result["vin"];
 		if (@$vinobj[0]["coinbase"] == "")
-			continue;	// Mining tx ¾Æ´Ï¸é skip
+			continue;	// Mining tx ì•„ë‹ˆë©´ skip
 
 		$rewards = 0;
 		$voutobj = @$result["vout"];
@@ -148,7 +148,7 @@ function calc_mining_tx($fp, $block)
 		}
 		$voutaddrs = substr($voutaddrs, 0, strlen($voutaddrs) - 1);
 
-		break;	// ¸¶ÀÌ´× ºí·ÏÀº 1°³
+		break;	// ë§ˆì´ë‹ ë¸”ë¡ì€ 1ê°œ
 	}
 
 	if ($prev_txtime > 0)

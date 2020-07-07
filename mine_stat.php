@@ -24,14 +24,14 @@ function init($argv)
 	array_shift($argv);
 	$args = $argv;
 
-	// hdacrpc.cfg ÀĞ±â
+	// hdacrpc.cfg ì½ê¸°
 	$config=read_config();
 
-	// ±âº» »ç¿ë name ¼±Á¤ (hdacrpc.cfg ÂüÁ¶)
+	// ê¸°ë³¸ ì‚¬ìš© name ì„ ì • (hdacrpc.cfg ì°¸ì¡°)
 	$chain = "hdac-mainnet";
 	set_hdac_chain($config[$chain]);
 
-	// ½Ã°£ ÃøÁ¤..
+	// ì‹œê°„ ì¸¡ì •..
 //	$ret = hdac("listblocks", "1");
 //	$lasttime = $ret["result"][0]["time"];
 }
